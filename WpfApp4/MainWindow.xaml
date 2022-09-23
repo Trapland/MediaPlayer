@@ -7,12 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <MediaElement Name="media" Margin="52,0,0,50"></MediaElement>
+        <MediaElement Name="media" Margin="52,0,0,50">
+            <MediaElement.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Open" Click="b_Click"></MenuItem>
+                    <MenuItem Header="Play" Click="b2_Click"></MenuItem>
+                    <MenuItem Header="Pause" Click="b3_Click"></MenuItem>
+                    <MenuItem Header="Stop" Click="b4_Click"></MenuItem>
+                </ContextMenu>
+            </MediaElement.ContextMenu>
+        </MediaElement>
         <StackPanel>
-        <Button Width="50" Height="50" HorizontalAlignment="Left" Name="b" Click="b_Click">Open</Button>
-        <Button Width="50" Height="50" HorizontalAlignment="Left" Name="b2" Click="b2_Click">Play</Button>
-        <Button Width="50" Height="50" HorizontalAlignment="Left" Name="b3" Click="b3_Click">Pause</Button>
-        <Button Width="50" Height="50" HorizontalAlignment="Left" Name="b4" Click="b4_Click">Stop</Button>
+            <Button Width="50" Height="50" HorizontalAlignment="Left" Name="b" Click="b_Click">Open</Button>
+            <Button Width="50" Height="50" HorizontalAlignment="Left" Name="b2" Click="b2_Click">Play</Button>
+            <Button Width="50" Height="50" HorizontalAlignment="Left" Name="b3" Click="b3_Click">Pause</Button>
+            <Button Width="50" Height="50" HorizontalAlignment="Left" Name="b4" Click="b4_Click">Stop</Button>
         </StackPanel>
         <Slider VerticalAlignment="Bottom" Name="s1" ValueChanged="s1_ValueChanged" ></Slider>
     </Grid>
