@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -32,18 +33,12 @@ namespace WpfApp4
             if (ofd.ShowDialog() == true)
             {
                 media.Source = new Uri(ofd.FileName);
-                s1.Maximum = 109;
             }
         }
 
         private void b2_Click(object sender, RoutedEventArgs e)
         {
             media.LoadedBehavior = MediaState.Play;
-            if (media.NaturalDuration.HasTimeSpan)
-            {
-                var a = media.NaturalDuration.TimeSpan.TotalSeconds;
-                s1.Maximum = Convert.ToDouble(a);
-            }
         }
 
         private void b3_Click(object sender, RoutedEventArgs e)
@@ -58,13 +53,14 @@ namespace WpfApp4
 
         private void s1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            if (s1.Maximum != media.NaturalDuration.TimeSpan.TotalSeconds)
+                s1.Maximum = media.NaturalDuration.TimeSpan.TotalSeconds;
             media.Position = TimeSpan.FromSeconds(s1.Value);
         }
 
         private void s1_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
         {
-            
+
         }
     }
 }
